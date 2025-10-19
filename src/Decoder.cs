@@ -96,6 +96,7 @@ namespace OldPhonePad.OOP
 
         /// <summary>
         /// Counts how many times a specific key is pressed consecutively in the sequence.
+        /// Had to think through the maxPresses limit here
         /// </summary>
         /// <param name="sequence">The full input sequence.</param>
         /// <param name="startIndex">The starting position to count from.</param>

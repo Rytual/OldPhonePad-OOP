@@ -28,7 +28,7 @@ namespace OldPhonePad.OOP
         /// string result = OldPhonePad.OldPhonePad("4433555 555666#"); // Returns "HELLO"
         /// </code>
         /// </example>
-        public static string OldPhonePad(string input)
+        public static string Decode(string input)
         {
             return defaultDecoder.Decode(input);
         }
@@ -40,7 +40,7 @@ namespace OldPhonePad.OOP
         /// <param name="input">The input string to decode.</param>
         /// <param name="keypad">A custom Keypad instance.</param>
         /// <returns>The decoded text string.</returns>
-        public static string OldPhonePad(string input, Keypad keypad)
+        public static string DecodeWithKeypad(string input, Keypad keypad)
         {
             var decoder = new Decoder(keypad);
             return decoder.Decode(input);

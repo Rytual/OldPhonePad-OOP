@@ -34,6 +34,7 @@ namespace OldPhonePad.OOP
 
         /// <summary>
         /// Gets the character associated with pressing a specific key a certain number of times.
+        /// Took a bit to get the index conversion right
         /// </summary>
         /// <param name="key">The numeric key pressed (0-9).</param>
         /// <param name="pressCount">The number of consecutive presses (1-based).</param>
