@@ -72,7 +72,7 @@ It's like we're building a digital twin of that Nokia 3310 you dropped down the 
 - **Extensibility**: Want a different keypad layout? Just extend Keypad
 - **Dependency Injection**: Decoder accepts a Keypad instance, following SOLID principles
 - **Null Safety**: Uses nullable types appropriately with C# 8+ nullable reference types
-- **Comprehensive Documentation**: Every public method has XML documentation
+- **Full Documentation**: Every public method has XML documentation
 
 ## Installation
 
@@ -166,7 +166,7 @@ public class Decoder
 
 ## Running the Tests
 
-We have comprehensive test coverage across two test classes:
+We have solid test coverage across two test classes:
 
 ```bash
 # Run all tests
@@ -186,13 +186,13 @@ dotnet test /p:CollectCoverage=true
 
 ## Advantages of This Approach
 
-### 1. Single Responsibility Principle
+**Single Responsibility Principle**
 Each class has one reason to change:
 - Keypad changes only if key mappings change
 - Decoder changes only if decoding logic changes
 - OldPhonePad changes only if the public API needs to change
 
-### 2. Testability
+**Testability**
 You can test each component in isolation:
 ```csharp
 [Fact]
@@ -204,7 +204,7 @@ public void Keypad_GetCharacter_ValidInput_ReturnsCorrectChar()
 }
 ```
 
-### 3. Extensibility
+**Extensibility**
 Need a different keypad? Just inherit:
 ```csharp
 public class InternationalKeypad : Keypad
@@ -216,34 +216,34 @@ public class InternationalKeypad : Keypad
 }
 ```
 
-### 4. Maintainability
+**Maintainability**
 Clear separation makes the code easy to understand and modify. Future developers (or future you) will thank you.
 
 ## Disadvantages (Because We're Honest)
 
-### 1. More Files
+**More Files**
 Three classes instead of one function means more files to navigate. Your solution explorer is getting crowded.
 
-### 2. Slight Performance Overhead
-Object instantiation and method calls add microseconds. For a kata exercise, this is negligible. For encoding War and Peace via T9, maybe think twice.
+**Slight Performance Overhead**
+Object instantiation and method calls add microseconds. For a kata exercise this is negligible. For encoding War and Peace via T9, maybe think twice.
 
-### 3. Potential Over-Engineering
-For a simple kata problem, this might be overkill. But for production code that needs to scale and evolve, it's just right.
+**Potential Over-Engineering**
+For a simple kata problem this might be overkill. But for production code that needs to scale and evolve, it's just right.
 
 ## When to Use This Approach
 
-✅ **Good for:**
+**Good for:**
 - Production codebases
-- When code needs to be maintained long-term
-- When you need to support variations (different keypad layouts)
-- When testability is important
-- When you're working in a team (clear interfaces help)
+- Code that needs long-term maintenance
+- Supporting variations like different keypad layouts
+- When testability matters
+- Team projects where clear interfaces help
 
-❌ **Overkill for:**
+**Overkill for:**
 - Quick prototypes
 - One-off scripts
 - When performance is absolutely critical
-- When you're the only developer and it's a 50-line program
+- Solo 50-line programs
 
 ## Nostalgic Tech Corner
 
@@ -253,9 +253,9 @@ Remember when design patterns were the hottest thing in software development? We
 - Decorators wrapping things like Christmas presents
 - Observers watching everything like your paranoid neighbor
 
-This implementation is a love letter to those days when we read "Design Patterns" cover to cover and tried to use every pattern in every project. Sometimes we went too far. Sometimes we didn't go far enough. But we learned, and that's what matters.
+This implementation is a love letter to those days when we read "Design Patterns" cover to cover and tried to use every pattern in every project. Sometimes we went too far. Sometimes we didn't go far enough. But we learned and that's what matters.
 
-The beauty of OOP isn't just about objects—it's about organizing complexity in a way that mirrors how we think about the real world. A keypad is a thing. A decoder is a thing. They work together, but they're separate concerns. That's not over-engineering; that's just good engineering.
+The beauty of OOP isn't just about objects - it's about organizing complexity in a way that mirrors how we think about the real world. A keypad is a thing. A decoder is a thing. They work together but they're separate concerns. That's not over-engineering, that's just good engineering.
 
 ## Related Repositories
 
@@ -267,18 +267,18 @@ This is part of a collection exploring different approaches to the same problem:
 - **OldPhonePad-OOP** - You are here! (Object-oriented design)
 - [OldPhonePad-RegexStack](https://github.com/ironsoftware/OldPhonePad-RegexStack) - Regex preprocessing with Stack
 
-Each repository demonstrates different programming paradigms and trade-offs. Perfect for:
+Each repository demonstrates different programming paradigms and trade-offs. Good for:
 - Learning different architectural approaches
 - Comparing performance characteristics
 - Understanding when to use which pattern
 - Preparing for technical interviews
-- Impressing your colleagues with your versatility
+- Showing off your versatility to colleagues
 
 ## Contributing
 
 Found a way to make the OOP design even cleaner? Have a suggestion for better abstraction? PRs welcome!
 
-Please ensure:
+Make sure:
 - All tests pass (`dotnet test`)
 - Code follows C# conventions
 - XML documentation is complete
@@ -290,6 +290,6 @@ MIT License - See [LICENSE](LICENSE) file for details.
 
 ---
 
-*Built with SOLID principles, design patterns, and a healthy dose of nostalgia for the days when we thought inheritance hierarchies 10 levels deep were a good idea. (They weren't.)*
+*Built with SOLID principles, design patterns and a healthy dose of nostalgia for the days when we thought inheritance hierarchies 10 levels deep were a good idea. (They weren't.)*
 
-**Remember**: Objects are great, but don't forget—sometimes a function is just a function, and that's okay too. Choose the right tool for the job, not the fanciest one.
+**Remember**: Objects are great but sometimes a function is just a function and that's okay too. Choose the right tool for the job, not the fanciest one.
