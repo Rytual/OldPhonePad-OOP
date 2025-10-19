@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>OldPhonePad.OOP</RootNamespace>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+
+    <!-- Package Information -->
+    <PackageId>OldPhonePad.OOP</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>IronSoftware</Authors>
+    <Company>IronSoftware</Company>
+    <Product>OldPhonePad OOP Implementation</Product>
+    <Description>Object-oriented implementation of an old mobile phone keypad decoder with clean separation of concerns using Keypad and Decoder classes.</Description>
+    <Copyright>Copyright © IronSoftware 2025</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/ironsoftware/OldPhonePad-OOP</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ironsoftware/OldPhonePad-OOP</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>keypad;t9;decoder;oop;mobile;phone;text</PackageTags>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <Optimize>true</Optimize>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+</Project>
