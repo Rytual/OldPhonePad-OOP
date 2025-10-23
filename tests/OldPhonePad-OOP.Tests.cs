@@ -17,7 +17,7 @@ public class OldPhonePadTests
     }
 
     [Fact]
-    public void TestExample_HELLO()
+    public void DecodesHelloWithThaiTwist()
     {
         string result = Solution.OldPhonePad("44 33 555 555 666#");
         Assert.Equal("HELLO", result);
@@ -73,7 +73,7 @@ public class OldPhonePadTests
     }
 
     [Fact]
-    public void TestCulturalShift_India()
+    public void TextsFromDelhiWithDevanagari()
     {
         Keypad keypad = new Keypad();
         keypad.CulturalShift("India");
@@ -83,7 +83,7 @@ public class OldPhonePadTests
     }
 
     [Fact]
-    public void TestCulturalShift_Holland()
+    public void CyclesAmsterdamWithDutchIJ()
     {
         Keypad keypad = new Keypad();
         keypad.CulturalShift("Holland");
@@ -93,7 +93,7 @@ public class OldPhonePadTests
     }
 
     [Fact]
-    public void TestCulturalShift_Thailand()
+    public void TrainsInBangkokWithThai()
     {
         Keypad keypad = new Keypad();
         keypad.CulturalShift("Thailand");
@@ -103,21 +103,21 @@ public class OldPhonePadTests
     }
 
     [Fact]
-    public void TestExistentialThought_Camus()
+    public void ReflectsOnCamusAbsurdity()
     {
         string result = Solution.OldPhonePad("777#");
         Assert.Equal("Camus: the absurd persists in endless cycles", result);
     }
 
     [Fact]
-    public void TestExistentialThought_Dostoevsky()
+    public void PondersDostoevskyFreedom()
     {
         string result = Solution.OldPhonePad("666#");
         Assert.Equal("Dostoevsky: freedom's burden shapes your path", result);
     }
 
     [Fact]
-    public void TestExistentialThought_Nietzsche()
+    public void ChannelsNietzscheWill()
     {
         string result = Solution.OldPhonePad("999#");
         Assert.Equal("Nietzsche: will to power fuels your growth", result);

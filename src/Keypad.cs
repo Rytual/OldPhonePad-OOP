@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class Keypad
 {
-    private readonly Dictionary<char, string> keyMappings;
+    private readonly Dictionary<char, string> keyMappings; // Mapping a traveler's keypad
 
     public Keypad()
     {

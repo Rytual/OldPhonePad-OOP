@@ -28,7 +28,7 @@ public class Decoder
             return string.Empty;
         }
 
-        // Easter egg
+        // Easter egg - a nod to philosophical cycles
         if (input == "AI#")
         {
             if (pastInputs.Count > 0)
@@ -38,7 +38,7 @@ public class Decoder
             return "Kage predicts: move";
         }
 
-        // Check for existential thoughts
+        // Check for existential thoughts - weaving meaning into keystrokes
         if (existentialThoughts.TryGetValue(input, out string? thought))
         {
             pastInputs.Add(input);

@@ -27,7 +27,7 @@ public class SnakeGame
             Draw();
             Input();
             Logic();
-            Thread.Sleep(200);
+            Thread.Sleep(200); // Like a Muay Thai rest between rounds
         }
     }
 
