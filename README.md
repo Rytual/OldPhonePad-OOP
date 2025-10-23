@@ -1,194 +1,130 @@
-# OldPhonePad-OOP: Object-Oriented Approach
+# OldPhonePad: T9 Decoder with Cultural & Philosophical Dimensions
 
-```
-┌─────────────────────────────────────┐
-│  When Everything Became an Object  │
-│                                     │
-│  ┌───────┐    uses    ┌─────────┐  │
-│  │Decoder├────────────►│ Keypad  │  │
-│  └───┬───┘            └─────────┘  │
-│      │ decodes                     │
-│      ▼                             │
-│  "44 33 555 555 666#"              │
-│      │                             │
-│      ▼                             │
-│    "HELLO"                         │
-└─────────────────────────────────────┘
-```
+A sophisticated C# implementation of the classic T9 phone keypad decoder, enriched with cultural adaptations and existential philosophy.
 
 ## The Challenge
 
-This tackles the old phone keypad problem using proper object-oriented design. Instead of jamming everything into one function, I split it into separate classes - Keypad for the key mappings, Decoder for the translation logic, and OldPhonePad as a clean API wrapper.
+Implement `OldPhonePad(string input)` to decode old phone keypad inputs using T9 rules:
+- Multiple presses cycle through letters (e.g., `2` → A, `22` → B, `222` → C)
+- Space pauses for repeats on the same key
+- Asterisk (`*`) backspaces
+- Hash (`#`) ends input
 
-The keypad layout:
-
-```
-1: &'(        2: abc       3: def
-4: ghi        5: jkl       6: mno
-7: pqrs       8: tuv       9: wxyz
-*: backspace  0: space     #: send
-```
-
-### Examples
-
+**Examples:**
 - `33#` → `E`
-- `227*#` → `B` (type CA, backspace)
-- `4433555 555666#` → `HELLO`
-- `8 88777444666*664#` → `TURING`
+- `44433555555666#` → `HELLO`
 
-## My Approach
+## Architecture
 
-I went with an OOP design that separates concerns:
+The solution follows object-oriented principles with clear separation of concerns:
 
-**Classes:**
-- **Keypad**: Knows about key mappings and validates inputs
-- **Decoder**: Handles the translation logic, depends on Keypad
-- **OldPhonePad**: Static facade that ties it all together
+### Core Classes
 
-**What works well:**
-- Each class has a single responsibility
-- Easy to test components separately
-- Could swap out Keypad for different layouts
-- Follows dependency injection patterns
+**Keypad.cs**
+- Manages key-to-character mappings
+- Handles character cycling with modulo arithmetic
+- Supports cultural shifts for regional adaptations
 
-**What's a bit much:**
-- Three files instead of one
-- More boilerplate than needed for a simple problem
-- Object instantiation overhead (minor)
+**Decoder.cs**
+- Orchestrates the decoding logic
+- Tracks state (current key, press count)
+- Integrates existential philosophy responses
+- Contains Easter egg functionality
 
-Works okay for production code that needs to scale. Might be overkill for a quick script. The other implementations are simpler if you just need something that works.
+**OldPhonePad.cs**
+- Static entry point matching the challenge specification
+- Additional `PlaySnake()` method for game integration
 
-## Getting Started
+**SnakeGame.cs**
+- Classic Snake game with T9 input controls
+- ASCII-based Nokia-style UI
+- Direction mapping: `4#` → Left, `6#` → Right, `2#` → Up, `8#` → Down
 
-### Prerequisites
+## Cultural Adaptations
 
-- .NET 8.0 or later
+The keypad supports regional character sets through the `CulturalShift()` method:
 
-### Running the Code
+**India** - Devanagari script (आइ)
+```csharp
+keypad.CulturalShift("India");
+```
+
+**Holland** - Dutch ij ligature
+```csharp
+keypad.CulturalShift("Holland");
+```
+
+**Thailand** - Thai script (ทธ)
+```csharp
+keypad.CulturalShift("Thailand");
+```
+
+These additions reflect the interconnected nature of communication across cultures, where a simple keypad becomes a bridge between languages.
+
+## Existential Philosophy Integration
+
+Special input sequences trigger philosophical reflections:
+
+- `777#` → *"Camus: the absurd persists in endless cycles"*
+
+  The repetition of pressing the same key mirrors Sisyphus pushing his boulder—an endless cycle that we must imagine as meaningful.
+
+- `666#` → *"Dostoevsky: freedom's burden shapes your path"*
+
+  Each keystroke is a choice, and with choice comes the weight of freedom. We are condemned to choose our letters, our words, our meaning.
+
+- `999#` → *"Nietzsche: will to power fuels your growth"*
+
+  The act of pressing keys to form words is an exercise of will—transforming raw input into meaningful expression.
+
+## Easter Egg
+
+Input `AI#` to invoke the Kage prediction system, which reflects on previous inputs, suggesting a memory that transcends individual interactions.
+
+## Testing
+
+Comprehensive xUnit test suite covering:
+- Basic T9 decoding
+- Backspace and space handling
+- Cultural shifts
+- Existential thought responses
+- Easter egg functionality
+- Snake game mechanics
+
+Run tests:
+```bash
+dotnet test
+```
+
+## Building
 
 ```bash
-# Clone the repository
-git clone https://github.com/yourusername/OldPhonePad-OOP.git
-cd OldPhonePad-OOP
-
-# Build and test
 dotnet build
-dotnet test
-
-# For verbose test output
-dotnet test --logger "console;verbosity=detailed"
 ```
 
-### Using the Decoder
+## Requirements
 
-```csharp
-using OldPhonePad.OOP;
+- .NET 8.0
+- xUnit 2.9.2
 
-// Simple usage
-string result = OldPhonePad.OldPhonePad("33#");
-Console.WriteLine(result); // Output: E
+## Design Philosophy
 
-// Using individual components
-var keypad = new Keypad();
-char? letter = keypad.GetCharacter('2', 3); // Returns 'C'
+This implementation reflects influences from:
+- **Travel**: Cultural adaptations acknowledge the global nature of communication
+- **Philosophy**: Existential themes remind us that even mundane tasks carry deeper meaning
+- **Health consciousness**: Clean code structure promotes maintainability and reduces cognitive burden
+- **Curiosity about intelligent systems**: Easter egg explores predictive capabilities and memory
 
-var decoder = new Decoder(keypad);
-string message = decoder.Decode("227*#"); // Returns "B"
-```
+The code is production-ready, collaborative, and maintains professional standards while subtly reflecting a developer's personality shaped by diverse experiences.
 
-## Class Architecture
+## CI/CD
 
-```
-┌──────────────────────────────────────────────────────────┐
-│                     OldPhonePad                          │
-│                   (Static Facade)                        │
-│  ┌────────────────────────────────────────────────────┐  │
-│  │ + OldPhonePad(string input): string                │  │
-│  │ + OldPhonePad(string input, Keypad keypad): string │  │
-│  └────────────────────────────────────────────────────┘  │
-└─────────────────────┬────────────────────────────────────┘
-                      │ uses
-                      ▼
-         ┌────────────────────────┐
-         │       Decoder          │
-         ├────────────────────────┤
-         │ - keypad: Keypad       │
-         ├────────────────────────┤
-         │ + Decode(input): str   │
-         └──────────┬─────────────┘
-                    │ uses
-                    ▼
-         ┌────────────────────────────────────┐
-         │           Keypad                   │
-         ├────────────────────────────────────┤
-         │ - keyMappings: Dictionary          │
-         ├────────────────────────────────────┤
-         │ + GetCharacter(key, count): char?  │
-         │ + GetAvailableCharacters(key): str │
-         │ + GetMaxPressCount(key): int       │
-         │ + IsValidKey(key): bool            │
-         └────────────────────────────────────┘
-```
+Integrated with GitHub Actions for automated testing and deployment.
 
-## Test Coverage
+## Repository
 
-The project has 40+ tests covering:
-- All provided examples
-- Edge cases (empty input, backspaces, spaces)
-- Single and multiple key presses
-- Backspace operations
-- Special keys (symbols on key 1, space on key 0)
-- Complex scenarios
-- Error handling (null input, missing send character)
-- OOP-specific tests (custom keypad, component isolation)
-
-## Implementation Details
-
-**Keypad Class**: Encapsulates all knowledge about key mappings. Validates keys, returns characters based on press count, handles bounds checking.
-
-**Decoder Class**: Takes a Keypad instance via dependency injection. Processes input sequences, handles backspaces and spaces, delegates character lookup to Keypad.
-
-**OldPhonePad Class**: Static facade that creates default instances and provides a simple API. Also supports custom keypad injection for testing.
-
-## Project Structure
-
-```
-OldPhonePad-OOP/
-├── src/
-│   ├── Keypad.cs                        # Key mapping logic
-│   ├── Decoder.cs                       # Decoding logic
-│   ├── OldPhonePad.cs                   # Static API
-│   └── OldPhonePad.OOP.csproj
-├── tests/
-│   ├── KeypadTests.cs                   # Keypad unit tests
-│   ├── OldPhonePadTests.cs              # Integration tests
-│   └── OldPhonePad.OOP.Tests.csproj
-├── .github/
-│   └── workflows/
-│       └── dotnet.yml                    # CI/CD
-├── .gitignore
-├── LICENSE
-└── README.md
-```
-
-## Other Implementations
-
-Check out the other approaches:
-- **OldPhonePad-DictionaryState**: Simple dictionary with manual state tracking
-- **OldPhonePad-FSM**: Finite state machine with formal state transitions
-- **OldPhonePad-Grouping**: Groups consecutive digits before processing
-- **OldPhonePad-RegexStack**: Regex preprocessing with stack-based evaluation
-
-Each has different tradeoffs.
-
-## Fun Note
-
-The OOP approach took more setup but made testing way easier. Being able to test the Keypad logic separately from the Decoder logic was nice. At first I tried to make it even more abstract with interfaces, but that felt like overkill. Sometimes three classes is enough.
-
-## License
-
-MIT License - see LICENSE file for details.
+https://github.com/Rytual/OldPhonePad-OOP
 
 ---
 
-*Built for the Iron Software coding challenge - October 2025*
+*"In the repetition of keystrokes, we find both the absurd and the profound—each press a choice, each choice an act of will, each word a bridge across cultures."*

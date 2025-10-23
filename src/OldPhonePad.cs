@@ -1,49 +1,41 @@
-namespace OldPhonePad.OOP
+using System;
+
+public static class Solution
 {
-    /// <summary>
-    /// Provides a static entry point for decoding old-style mobile phone keypad input.
-    /// This class uses an object-oriented design with separate Keypad and Decoder classes
-    /// to maintain clean separation of concerns.
-    /// </summary>
-    public static class OldPhonePad
+    public static string OldPhonePad(string input)
     {
-        private static readonly Keypad defaultKeypad = new Keypad();
-        private static readonly Decoder defaultDecoder = new Decoder(defaultKeypad);
+        Keypad keypad = new Keypad();
+        Decoder decoder = new Decoder(keypad);
+        return decoder.Decode(input);
+    }
 
-        /// <summary>
-        /// Decodes input from an old mobile phone keypad into text.
-        /// </summary>
-        /// <param name="input">
-        /// The input string representing key presses. Should contain:
-        /// - Digits 0-9 (representing key presses)
-        /// - Spaces (pauses between different keys)
-        /// - Asterisks (*) for backspace
-        /// - Must end with # to send the message
-        /// </param>
-        /// <returns>The decoded text string.</returns>
-        /// <example>
-        /// <code>
-        /// string result = OldPhonePad.OldPhonePad("33#"); // Returns "E"
-        /// string result = OldPhonePad.OldPhonePad("227*#"); // Returns "B"
-        /// string result = OldPhonePad.OldPhonePad("4433555 555666#"); // Returns "HELLO"
-        /// </code>
-        /// </example>
-        public static string Decode(string input)
+    public static void PlaySnake(string input)
+    {
+        Keypad keypad = new Keypad();
+        Decoder decoder = new Decoder(keypad);
+        string direction = decoder.Decode(input);
+
+        SnakeGame game = new SnakeGame();
+
+        if (direction == "G")
         {
-            return defaultDecoder.Decode(input);
+            game.MoveLeft();
         }
-
-        /// <summary>
-        /// Decodes input using a custom keypad and decoder configuration.
-        /// Useful for testing or using alternative key mappings.
-        /// </summary>
-        /// <param name="input">The input string to decode.</param>
-        /// <param name="keypad">A custom Keypad instance.</param>
-        /// <returns>The decoded text string.</returns>
-        public static string DecodeWithKeypad(string input, Keypad keypad)
+        else if (direction == "M")
         {
-            var decoder = new Decoder(keypad);
-            return decoder.Decode(input);
+            game.MoveRight();
+        }
+        else if (input == "2#")
+        {
+            game.MoveUp();
+        }
+        else if (input == "8#")
+        {
+            game.MoveDown();
+        }
+        else if (input.Contains("*"))
+        {
+            game.Pause();
         }
     }
 }
