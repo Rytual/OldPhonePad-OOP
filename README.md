@@ -12,7 +12,7 @@ Implement `OldPhonePad(string input)` to decode old phone keypad inputs using T9
 
 **Examples:**
 - `33#` → `E`
-- `44433555555666#` → `HELLO`
+- `44 33 555 555 666#` → `HELLO`
 
 ## Architecture
 
