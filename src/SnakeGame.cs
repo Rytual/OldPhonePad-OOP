@@ -67,6 +67,22 @@ public class SnakeGame
         for (int i = 0; i < width + 2; i++)
             Console.Write("#");
         Console.WriteLine();
+
+        // ASCII Nokia-style keypad below the game
+        Console.WriteLine();
+        Console.WriteLine("  ┌─────┬─────┬─────┐");
+        Console.WriteLine("  │  1  │  2  │  3  │");
+        Console.WriteLine("  │     │ ABC │ DEF │");
+        Console.WriteLine("  ├─────┼─────┼─────┤");
+        Console.WriteLine("  │  4  │  5  │  6  │");
+        Console.WriteLine("  │ GHI │ JKL │ MNO │");
+        Console.WriteLine("  ├─────┼─────┼─────┤");
+        Console.WriteLine("  │  7  │  8  │  9  │");
+        Console.WriteLine("  │PQRS │ TUV │WXYZ │");
+        Console.WriteLine("  ├─────┼─────┼─────┤");
+        Console.WriteLine("  │  *  │  0  │  #  │");
+        Console.WriteLine("  │     │     │     │");
+        Console.WriteLine("  └─────┴─────┴─────┘");
     }
 
     private void Input()
